@@ -67,15 +67,15 @@ export const ItemTitle = styled.div`
   }
 `;
 export const ItemContent = styled.div`
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: ${Constants.BLACK};
   @media ${Constants.mobile} {
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 export const Button = styled.button`
-  font-size: 13px;
+  font-size: 12px;
   border-radius: 5px;
   padding: 4px 8px;
   cursor: default;
@@ -106,7 +106,7 @@ export const Button = styled.button`
   }}
   @media ${Constants.mobile} {
     padding: 3px 6px;
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 

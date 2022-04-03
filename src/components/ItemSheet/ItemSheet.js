@@ -20,7 +20,7 @@ const ItemSheet = () => {
 
   const [rows, setRows] = useState(keys);
   const [selColumn, setSelColumn] = useState(null);
-  const [selected, setSelected] = useState([]);
+  const [selectedColumn, setSelectedColumn] = useState([]);
   const [tableHeight, setTableHeight] = useState();
 
   const outsideRef = useRef();
@@ -46,10 +46,10 @@ const ItemSheet = () => {
   };
 
   const selectedHandler = (value) => {
-    if (selected.includes(value)) {
-      setSelected(selected.filter((item) => item !== value));
+    if (selectedColumn.includes(value)) {
+      setSelectedColumn(selectedColumn.filter((item) => item !== value));
     } else {
-      setSelected([...selected, value]);
+      setSelectedColumn([...selectedColumn, value]);
     }
   };
 
@@ -60,13 +60,13 @@ const ItemSheet = () => {
       }
     };
     document.addEventListener("click", clickOutsideHandler);
-    setRows(Array.from(new Set([...selected, ...rows])));
+    setRows(Array.from(new Set([...selectedColumn, ...rows])));
     setTableHeight(tableRef.current.getBoundingClientRect().height);
 
     return () => {
       document.removeEventListener("click", clickOutsideHandler);
     };
-  }, [clickedRowId, outsideRef, selected]);
+  }, [clickedRowId, outsideRef, selectedColumn]);
 
   const handleClick = (e) => {
     console.log(e.currentTarget.id);
@@ -78,7 +78,7 @@ const ItemSheet = () => {
   };
 
   const resetHandler = () => {
-    setSelected([]);
+    setSelectedColumn([]);
     setRows(Array.from(new Set(keys)));
   };
 
@@ -107,7 +107,7 @@ const ItemSheet = () => {
                       type="checkbox"
                       value={key}
                       onChange={isCheckedHandler}
-                      checked={selected.includes(key)}
+                      checked={selectedColumn.includes(key)}
                     />
                   </span>
                 </div>
